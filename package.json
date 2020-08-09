@@ -1,0 +1,45 @@
+{
+  "name": "test-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "autoprefixer": "^9.8.0",
+    "babel-plugin-macros": "^2.8.0",
+    "bootstrap": "^4.5.0",
+    "history": "^4.10.1",
+    "postcss": "^7.0.30",
+    "react": "^16.11.0",
+    "react-bootstrap": "^1.2.2",
+    "react-datepicker": "^2.16.0",
+    "react-dom": "^16.11.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.2.0",
+    "styled-components": "^5.1.0",
+    "tailwindcss": "^1.4.6"
+  },
+  "scripts": {
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.css",
+    "start": "npm run watch:css & react-scripts start",
+    "build": "npm run build:css react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

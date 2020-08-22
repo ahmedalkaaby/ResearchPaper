@@ -1,4 +1,5 @@
 import React from "react";
+import View from "./view";
 import { Route, Switch } from "react-router-dom";
 import Main from "./main";
 import Home from "./home";
@@ -8,8 +9,9 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/home" component={Main} />
+        <Route exact path="/" component={Main} />
+        <Route path="/Apply" component={Home} />
+        <Route path="/View" component={View} />
       </Switch>
     </div>
   );

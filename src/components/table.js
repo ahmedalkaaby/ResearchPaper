@@ -8,50 +8,40 @@ import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 
 class Tablerow extends React.Component {
-  state = {
-    rows: [{}],
-  };
-
-  handleChange = (idx) => (e) => {
-    const { name, value } = e.target;
-    const rows = [...this.state.rows];
-    rows[idx] = {
-      [name]: value,
+  constructor(props) {
+    super(props);
+    this.state = {
+      rows: [{ name: "", degree: "", placeofwork: "", signiture: "" }],
     };
-    this.setState({
-      rows,
-    });
-  };
+  }
+
   handleAddRow = () => {
     const item = {
       name: "",
       degree: "",
       placeofwork: "",
       signiture: "",
-      id: "",
     };
     this.setState({
       rows: [...this.state.rows, item],
     });
   };
-  handleRemoveRow = () => {
-    this.setState({
-      rows: this.state.rows.slice(0, -1),
-    });
-  };
+
   handleRemoveSpecificRow = (idx) => () => {
     const rows = [...this.state.rows];
     rows.splice(idx, 1);
     this.setState({ rows });
   };
   render() {
+    const rows = this.state.rows;
+
     return (
       <TableContainer className="mt-10 border rounded-lg border-gray-500 p-4">
         <Table>
           <TableHead>
             <TableRow>
               <TableCell align="right">ت</TableCell>
-              <TableCell align="right" className="font-cairo">
+              <TableCell align="right" className="mr-2">
                 اسماء الباحثون
               </TableCell>
               <TableCell align="right">المرتبة العلمية</TableCell>
@@ -60,8 +50,11 @@ class Tablerow extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.rows.map((item, idx) => (
-              <TableRow key={idx}>
+            {this.state.rows.map((value, idx) => (
+              <TableRow
+                key={idx}
+                onChange={this.props.handleChange(this.state.rows)}
+              >
                 <TableCell component="th" scope="row" align="right">
                   {idx + 1}
                 </TableCell>
@@ -69,8 +62,11 @@ class Tablerow extends React.Component {
                   <input
                     type="text"
                     name="name"
-                    value={this.state.rows[idx].name}
-                    onChange={this.handleChange(idx)}
+                    value={rows[idx].name}
+                    onChange={(e) => {
+                      rows[idx].name = e.target.value;
+                      this.setState({ rows });
+                    }}
                     className="border rounded-lg border-gray-500 py-2 pr-4"
                   />
                 </TableCell>
@@ -78,27 +74,36 @@ class Tablerow extends React.Component {
                   <input
                     type="text"
                     name="degree"
-                    value={this.state.rows[idx].degree}
+                    value={rows[idx].degree}
                     className="border rounded-lg border-gray-500 py-2 pr-4"
-                    onChange={this.handleChange(idx)}
+                    onChange={(e) => {
+                      rows[idx].degree = e.target.value;
+                      this.setState({ rows });
+                    }}
                   />
                 </TableCell>
                 <TableCell align="right">
                   <input
                     type="text"
                     name="placeofwork"
-                    value={this.state.rows[idx].placeofwork}
+                    value={rows[idx].placeofwork}
                     className="border rounded-lg border-gray-500 py-2 pr-4"
-                    onChange={this.handleChange(idx)}
+                    onChange={(e) => {
+                      rows[idx].placeofwork = e.target.value;
+                      this.setState({ rows });
+                    }}
                   />
                 </TableCell>
                 <TableCell align="right">
                   <input
                     type="text"
                     name="signiture"
-                    value={this.state.rows[idx].signiture}
+                    value={rows[idx].signiture}
                     className="border rounded-lg border-gray-500 py-2 pr-4"
-                    onChange={this.handleChange(idx)}
+                    onChange={(e) => {
+                      rows[idx].signiture = e.target.value;
+                      this.setState({ rows });
+                    }}
                   />
                 </TableCell>
                 <TableCell>

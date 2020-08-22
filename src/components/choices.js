@@ -4,20 +4,15 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 const Choices = (props) => {
-  const [value, setValue] = React.useState("female");
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
   return (
     <div className="flex">
       <h1 className="mr-1 mt-8 mb-1 text-xl">{props.headline}</h1>
       <div className="mr-8 pt-7 flex justify-center items-end">
         <FormControl component="fieldset">
-          <RadioGroup row value={value} onChange={handleChange}>
+          <RadioGroup row onChange={(e) => props.handleChange(e.target.value)}>
             {props.c1 ? (
               <FormControlLabel
-                value="choice-1"
+                value={props.c1}
                 control={<Radio color="primary" />}
                 label={props.c1}
                 labelPlacement="start"
@@ -28,7 +23,7 @@ const Choices = (props) => {
 
             {props.c2 ? (
               <FormControlLabel
-                value="choice-2"
+                value={props.c2}
                 control={<Radio color="primary" />}
                 label={props.c2}
                 labelPlacement="start"
@@ -38,7 +33,7 @@ const Choices = (props) => {
             )}
             {props.c3 ? (
               <FormControlLabel
-                value="choice-3"
+                value={props.c3}
                 control={<Radio color="primary" />}
                 label={props.c3}
                 labelPlacement="start"

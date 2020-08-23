@@ -25,3 +25,6 @@ yarn-error.log*
 node_modules
 .env
 package-lock.json.*
+#src
+/src/config.js
+/src/tempmain.js
